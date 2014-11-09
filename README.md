@@ -16,7 +16,7 @@ Example Output:
 > danielmiessler has:<br />
 
 > 131 followers.<br />
+> 352 pushes this year.<br />
 > 32 repositories.<br />
-> 352 code pushes.<br />
 <br />
 > Github score is: 1287
