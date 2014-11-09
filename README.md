@@ -9,7 +9,7 @@ This tool runs from the command line and takes a single parameter: the github us
 
 Example:
 
-<code>./GitHubRating danielmiessler</code>
+<code>./GitHubRating.sh danielmiessler</code>
 
 Example Output:
 
