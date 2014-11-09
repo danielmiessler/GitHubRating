@@ -13,16 +13,14 @@ Just put in the username and get out a single rating.
 
 Example:
 
-<code>Usage: ./GitHubRating danielmiessler</code>
+<code>./GitHubRating danielmiessler</code>
 
 Example Output:
 
-<code>danielmiessler has:
+> danielmiessler has:
 
-131 followers.
-32 repositories.
-352 code pushes.
+> 131 followers.
+> 32 repositories.
+> 352 code pushes.
 
-Github score is: 1287
-</code>
-
+> Github score is: 1287
