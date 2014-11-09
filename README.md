@@ -17,10 +17,10 @@ Example:
 
 Example Output:
 
-> danielmiessler has:
+> danielmiessler has:<br />
 
-> 131 followers.
-> 32 repositories.
-> 352 code pushes.
-
+> 131 followers.<br />
+> 32 repositories.<br />
+> 352 code pushes.<br />
+<br />
 > Github score is: 1287
