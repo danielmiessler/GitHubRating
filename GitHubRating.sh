@@ -40,10 +40,10 @@ SCORE=`echo "$NEWFOLLOWERS + $NEWCONTRIBS + $NEWREPOS" | bc`
 	echo ""$SITENAME" has:"
 	echo ""
 	echo ""$FOLLOWERS" followers."
-	echo ""$CONTRIBS" pushes this year."
-	echo ""$REPOS" repositories."
+	echo ""$CONTRIBS" public pushes this year."
+	echo ""$REPOS" public repositories."
     echo ""                                                                        
-    echo "Developer rating: "$SCORE""
+    echo "Developer rating (based on public contributions only): "$SCORE""
 
 # Help if no arguments                                                             
 
