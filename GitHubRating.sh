@@ -11,17 +11,17 @@ RESPONSECODE=''
 
 # Get page
 	
-curl -sLA "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/600.1.25 (KHTML, like Gecko) Version/8.0 Safari/600.1.25"  https://github.com/$USERNAME | sed -e 's/\</\'$'\n\</g' > $SITENAME-page.htm
+curl -sLA "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/600.1.25 (KHTML, like Gecko) Version/8.0 Safari/600.1.25"  https://github.com/$USERNAME > $SITENAME-page.htm
 
 # Get followers 
 
 	grep -i "vcard-stat-count" $SITENAME-page.htm | head -n 1 > $SITENAME-followers.txt
-    FOLLOWERS=`sed -e 's/.*\>\(.*\)*/\1/' $SITENAME-followers.txt | awk '{ print $1 }'`
+    FOLLOWERS=`sed -e 's/\(.*\)>\([0-9\.a-zA-Z]*\)<\(.*\)/\2/' $SITENAME-followers.txt | awk '{ print $1 }'`
 
 # Get contributions
 
-	grep -i "contrib-number" $SITENAME-page.htm | head -n 1 > $SITENAME-yearcontrib.txt
-    CONTRIBS=`sed -e 's/.*\>\(.*\)total.*/\1/' $SITENAME-yearcontrib.txt`
+	grep -i "contributions in the last year" $SITENAME-page.htm | head -n 1 > $SITENAME-yearcontrib.txt
+    CONTRIBS=`sed -e 's/\( *\)\([0-9,]\+\)\(.*\)/\2/' $SITENAME-yearcontrib.txt`
 
 # Get repositories
 
@@ -30,8 +30,9 @@ curl -sLA "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/600.1.25 
 
 # Calculate score
 
-NEWFOLLOWERS=`echo "$FOLLOWERS * 5" | bc`
-NEWCONTRIBS=`echo "$CONTRIBS * 1" | bc`
+NEWFOLLOWERS=`echo "$FOLLOWERS * 5" | sed -e 's/k/*1000/' | bc`
+NEWFOLLOWERS=`echo "$NEWFOLLOWERS/1" | bc`
+NEWCONTRIBS=`echo "$CONTRIBS * 1" |  sed -e 's/,//' | bc`
 NEWREPOS=`echo "$REPOS * 3" | bc`
 SCORE=`echo "$NEWFOLLOWERS + $NEWCONTRIBS + $NEWREPOS" | bc`
 
